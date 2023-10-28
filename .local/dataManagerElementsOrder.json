@@ -1,0 +1,41 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "scor&Sequence_1",
+        "name&Sequence_1",
+        "incercari&Sequence_1",
+        "variable1&Sequence_7",
+        "guessed_list&Sequence_1",
+        "bool_guessed&Sequence_1",
+        "int_guess&Sequence_1",
+        "int_number&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Flowchart.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "bool_guessed&Flowchart_1",
+        "int_guess&Flowchart_1",
+        "int_number&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
