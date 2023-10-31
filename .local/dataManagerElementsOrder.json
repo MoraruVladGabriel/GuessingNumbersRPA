@@ -12,6 +12,7 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "allGames&Sequence_7",
         "scor&Sequence_1",
         "name&Sequence_1",
         "incercari&Sequence_1",
@@ -34,6 +35,30 @@
         "int_number&Flowchart_1"
       ],
       "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ReadGames.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "outPlayedGames"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "WriteGames.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "inGuessedList",
+        "inIncercari",
+        "inScor",
+        "inGuessNumber",
+        "inName"
+      ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }

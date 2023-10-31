@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1244,3379" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1244,3810" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -28,6 +28,7 @@
       <x:String>System.Reflection</x:String>
       <x:String>UiPath.Activities.System.Arrays</x:String>
       <x:String>UiPath.Activities.System.Collections</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -74,6 +75,9 @@
       <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -81,7 +85,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="648,3314" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="648,3745" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int_number" />
       <Variable x:TypeArguments="x:Int32" Name="int_guess" />
@@ -133,9 +137,9 @@
         <InArgument x:TypeArguments="x:Int32">0</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[not bool_guessed]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="586,2436" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[not bool_guessed]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="586,2867" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
       <ui:InterruptibleDoWhile.Body>
-        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="552,2300" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="552,2731" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -146,7 +150,7 @@
               <OutArgument x:TypeArguments="x:Int32">[int_guess]</OutArgument>
             </ui:InputDialog.Result>
           </ui:InputDialog>
-          <If Condition="[int_guess = int_number]" sap:VirtualizedContainerService.HintSize="510,1933" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[int_guess = int_number]" sap:VirtualizedContainerService.HintSize="510,2364" sap2010:WorkflowViewState.IdRef="If_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -154,9 +158,10 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="476,715" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="476,1146" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="variable1" />
+                  <Variable x:TypeArguments="x:String" Name="allGames" />
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -185,7 +190,34 @@
                     <InArgument x:TypeArguments="x:Int32">[100-incercari+1]</InArgument>
                   </Assign.Value>
                 </Assign>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteGames.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="WriteGames.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="inName">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="name" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="inGuessNumber">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="int_guess.ToString" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="inScor">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="scor.ToString" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="inIncercari">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="incercari.ToString" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="inGuessedList">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Join(&quot;,&quot;,guessed_list).ToString" />
+                    </InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
                 <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,85" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;Congrats &quot;+name+&quot;!&quot;+&quot;You guessed the number &quot;+ int_guess.ToString+&quot;!&quot; +vbCrLf + &quot;Your attempts: &quot; + String.Join(&quot;,&quot;,guessed_list).ToString + vbCrLf + &quot;Total guesses: &quot;+incercari.ToString+vbCrLf+&quot;Score: &quot;+scor.ToString]" />
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ReadGames.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ReadGames.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <OutArgument x:TypeArguments="x:String" x:Key="outPlayedGames">
+                      <VisualBasicReference x:TypeArguments="x:String" ExpressionText="allGames" />
+                    </OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,85" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[&quot;Ranking: &quot; + vbCrLf + allGames]" />
                 <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Boolean">[bool_guessed]</OutArgument>
