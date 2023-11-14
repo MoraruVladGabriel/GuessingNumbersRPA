@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,5341</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,5546</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -96,7 +96,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="724,5276" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="724,5481" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int_number" />
       <Variable x:TypeArguments="x:Int32" Name="int_guess" />
@@ -106,6 +106,7 @@
       <Variable x:TypeArguments="x:String" Name="name" />
       <Variable x:TypeArguments="x:Int32" Name="scor" />
       <Variable x:TypeArguments="x:String" Name="str_guess" />
+      <Variable x:TypeArguments="x:String" Name="ranking" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -149,9 +150,9 @@
         <InArgument x:TypeArguments="x:Int32">0</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[not bool_guessed]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="662,4398" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[not bool_guessed]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="662,4603" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
       <ui:InterruptibleDoWhile.Body>
-        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="628,4262" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="628,4467" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -221,7 +222,7 @@
                     <Catch x:TypeArguments="s:ArgumentException" sap:VirtualizedContainerService.HintSize="476,154" sap2010:WorkflowViewState.IdRef="Catch`1_4">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -240,7 +241,7 @@
               <Literal x:TypeArguments="x:Boolean" Value="True" />
             </ui:InterruptibleWhile.Condition>
           </ui:InterruptibleWhile>
-          <If Condition="[int_guess = int_number]" sap:VirtualizedContainerService.HintSize="586,2364" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[int_guess = int_number]" sap:VirtualizedContainerService.HintSize="586,2569" sap2010:WorkflowViewState.IdRef="If_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -248,10 +249,11 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="476,1146" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="476,1351" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="variable1" />
                   <Variable x:TypeArguments="x:String" Name="allGames" />
+                  <Variable x:TypeArguments="x:String" Name="resultString" />
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -295,7 +297,17 @@
                     <OutArgument x:TypeArguments="x:String" x:Key="outPlayedGames">[allGames]</OutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
-                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,85" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[&quot;Ranking: &quot; + vbCrLf + allGames]" />
+                <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim resultList As New List(Of Dictionary(Of String, Object))()&#xD;&#xA;&#xD;&#xA;        ' Split the string into lines&#xD;&#xA;        Dim lines As String() = allGames.Split({vbCrLf}, StringSplitOptions.RemoveEmptyEntries)&#xD;&#xA;&#xD;&#xA;        For Each line As String In lines&#xD;&#xA;            Dim parts As String() = line.Split(&quot; &quot;c)&#xD;&#xA;&#xD;&#xA;            ' Extract information&#xD;&#xA;            Dim nume As String = parts(0)&#xD;&#xA;            Dim scor As Integer = Integer.Parse(parts(1))&#xD;&#xA;&#xD;&#xA;            ' Create dictionary&#xD;&#xA;            Dim entry As New Dictionary(Of String, Object) From {&#xD;&#xA;                {&quot;nume&quot;, nume},&#xD;&#xA;                {&quot;scor&quot;, scor}&#xD;&#xA;            }&#xD;&#xA;&#xD;&#xA;            ' Add the dictionary to the result list&#xD;&#xA;            resultList.Add(entry)&#xD;&#xA;        Next&#xD;&#xA;&#xD;&#xA;       ' Order the list by &quot;scor&quot; in descending order&#xD;&#xA;        resultList = resultList.OrderByDescending(Function(d) CInt(d(&quot;scor&quot;))).ToList()&#xD;&#xA;&#xD;&#xA;       ' Save the information to a string&#xD;&#xA;        &#xD;&#xA;        For Each entry As Dictionary(Of String, Object) In resultList&#xD;&#xA;            ranking += $&quot;{entry(&quot;nume&quot;)} {entry(&quot;scor&quot;)}{Environment.NewLine}&quot;&#xD;&#xA;        Next&#xD;&#xA;&#xD;&#xA;        ' Print the result string&#xD;&#xA;        Console.WriteLine(ranking)" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="434,165" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+                  <ui:InvokeCode.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="allGames">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="allGames" />
+                    </InArgument>
+                    <InOutArgument x:TypeArguments="x:String" x:Key="ranking">
+                      <VisualBasicReference x:TypeArguments="x:String" ExpressionText="ranking" />
+                    </InOutArgument>
+                  </ui:InvokeCode.Arguments>
+                </ui:InvokeCode>
+                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,85" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[&quot;Ranking: &quot; + vbCrLf + ranking]" />
                 <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Boolean">[bool_guessed]</OutArgument>
